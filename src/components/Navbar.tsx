@@ -37,7 +37,7 @@ const App: React.FC = () => {
             }
         }
     }}>
-        <Header className="bg-black backdrop-blur	flex items-center px-5 py-10 max-w-screen sticky top-0">
+        <Header className="bg-black backdrop-blur	flex items-center px-5 py-10 max-w-screen sticky top-0 z-50">
             <Menu                            
                 onClick={onClick}                
                 selectedKeys={[current]}

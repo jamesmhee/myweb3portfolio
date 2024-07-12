@@ -40,7 +40,7 @@ const SegmentDetail = ({walletAddress, segment}: Props) => {
         <div className='flex flex-col gap-2 backdrop-blur-sm w-full font-medium'>            
             <div className='flex gap-1'>
                 <span>Wallet Address :</span>
-                <span className="select-all inline-flex" onClick={()=> navigator.clipboard.writeText(walletAddress)}>{walletAddress} <BsCopy className='cursor-pointer ml-2 inline-flex my-auto'/></span>
+                <span className="text-wrap select-all inline-flex" onClick={()=> navigator.clipboard.writeText(walletAddress)}>{walletAddress} <BsCopy className='cursor-pointer ml-2 inline-flex my-auto'/></span>
             </div>
             {
                 segment === 'Portfolio' ?

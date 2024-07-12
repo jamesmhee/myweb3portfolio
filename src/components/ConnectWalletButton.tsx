@@ -1,7 +1,7 @@
 import { ThirdwebProvider, ConnectButton } from "thirdweb/react";
 import { createWallet, walletConnect } from "thirdweb/wallets";
 import { createThirdwebClient } from "thirdweb";
-import { LoginPayload,VerifyLoginPayloadParams } from "thirdweb/auth";
+import { VerifyLoginPayloadParams } from "thirdweb/auth";
 import { UserContext } from "../hooks/UserWallet";
 import { useContext } from "react";
 
@@ -30,7 +30,7 @@ export interface Payload {
 
 
 export default function App() {  
-  const { walletAddress, setWalletAddress } = useContext(UserContext)
+  const { setWalletAddress } = useContext(UserContext)
 
   const generatePayload = ({address} : {address : string}) =>{        
     setWalletAddress(address)    
@@ -50,7 +50,7 @@ export default function App() {
             setWalletAddress(address)
             return true
           },
-          getLoginPayload: async ({ address } : {address : string}) =>
+          getLoginPayload: async ({ address } : any) : Promise<any> =>
             generatePayload({ address }),
           doLogin: async (params: VerifyLoginPayloadParams) : Promise<void> => {            
             console.log(params)            

@@ -1,11 +1,28 @@
-interface IGetWalletBalanceProps {
-    address: string
+interface IGetWalletBalanceProps {    
+    address: string,
+    type?: 'all' | 'eth' | 'op' | 'arb' | 'avax' | 'polygon' | 'base' | 'zksync' | 'scroll' | 'blast' | 'mode' | 'linea'
     action?: 'balance' | 'transaction' | 'tokenbalance'
 }
 
 export const getWalletBalance = async ({address, action}:IGetWalletBalanceProps) =>{
     let endpoint:string = 
     `https://api.etherscan.io/api?module=account&action=${action}&address=${address}&tag=latest&apikey=TANBMIU9P1DWTQJ1GWNWA5RSISUYYVD3M2`
+    let config:object = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const getBalance = await fetch(endpoint, config)
+    if(getBalance.ok){
+        return await getBalance.json()
+    }else{
+        return {}
+    }    
+}
+
+export const dashboard = async ({address, type = 'all'}:IGetWalletBalanceProps) =>{
+    let endpoint:string = `https://api.carmanrider.autos/web3/dashboard/${type}/${address}`
     let config:object = {
         method: 'GET',
         headers: {

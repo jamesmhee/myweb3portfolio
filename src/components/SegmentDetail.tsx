@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { getWalletBalance, getWalletTransaction } from '../services/WalletService'
+import { getWalletBalance, getWalletTransaction, dashboard } from '../services/WalletService'
 import { BsCopy } from "react-icons/bs";
 
 
@@ -20,7 +20,7 @@ const SegmentDetail = ({walletAddress, segment}: Props) => {
     
     const getBalance = useCallback(async ()=>{
         if(segment === 'Portfolio'){
-            const bal = await getWalletBalance({address: walletAddress, action: 'balance'})
+            const bal = await dashboard({address: walletAddress, type: 'all'})
             setData(bal)            
         }else if(segment === 'NFT'){
             const bal = await getWalletBalance({address: walletAddress, action: 'tokenbalance'})

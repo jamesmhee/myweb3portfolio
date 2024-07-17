@@ -38,16 +38,16 @@ const SegmentDetail = ({walletAddress, segment}: Props) => {
   return (
     <div className='p-5 flex w-full h-full'>                    
         <div className='flex flex-col gap-2 backdrop-blur-sm w-full font-medium'>            
-            <div className='flex gap-1'>
-                <span>Wallet Address :</span>
-                <span className="text-wrap select-all inline-flex" onClick={()=> navigator.clipboard.writeText(walletAddress)}>{walletAddress} <BsCopy className='cursor-pointer ml-2 inline-flex my-auto'/></span>
+            <div className='flex-col sm:flex-row flex gap-1 w-full'>
+                <span className='flex-shrink-0 flex-grow w-max'>Wallet Address :</span>
+                <span className="flex-auto text-wrap text-xs sm:text-sm w-full overflow-auto select-all inline-flex flex-wrap" onClick={()=> navigator.clipboard.writeText(walletAddress)}>{walletAddress} <BsCopy className='cursor-pointer ml-2 inline-flex my-auto'/></span>
             </div>
             {
                 segment === 'Portfolio' ?
                 (
                     <div className='flex gap-1'>
-                        <span>Wallet Balance :</span>
-                        <span>{Number.isNaN((Number(data?.result) / unit).toFixed(6)) || (Number(data?.result) / unit).toFixed(6) === 'NaN' ? 'Loading..' : (Number(data?.result) / unit).toFixed(6)}</span>
+                        <span className='flex-shrink-0 flex-grow'>Wallet Balance :</span>
+                        <span className='flex-auto text-wrap w-full'>{Number.isNaN((Number(data?.result) / unit).toFixed(6)) || (Number(data?.result) / unit).toFixed(6) === 'NaN' ? 'Loading..' : (Number(data?.result) / unit).toFixed(6)}</span>
                     </div>
                 ) : 
                 (
